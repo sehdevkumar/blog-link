@@ -1,10 +1,16 @@
 #!/bin/bash
 
-# # navigate to the root of the git repository
-# cd $(git rev-parse --show-toplevel)
+# navigate to the root of the git repository
+cd $(git rev-parse --show-toplevel)
 
-# add all changes to the git index
-git add .
+
+read -p "Do You want to add changes? (yes/no) " confirm
+if [ "$confirm" == "y" ]; then
+    # add all changes to the git index
+    git add .
+else
+     exit
+fi
 
 # commit changes with a message
 git commit -m "Automatic commit from bash script"
