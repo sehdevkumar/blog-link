@@ -5,7 +5,8 @@ cd $(git rev-parse --show-toplevel)
 
 
 read -p "Do You want to add changes? (yes/no) " confirm
-if [ "$confirm" == "y" ]; then
+
+if [ "$confirm" == "y" ] || [ "$confirm" == "yes" ]; then
     # add all changes to the git index
     git add .
 else
