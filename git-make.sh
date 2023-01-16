@@ -1,7 +1,7 @@
 #!/bin/bash
 
-# navigate to the root of the git repository
-cd $(git rev-parse --show-toplevel)
+# # navigate to the root of the git repository
+# cd $(git rev-parse --show-toplevel)
 
 # add all changes to the git index
 git add .
