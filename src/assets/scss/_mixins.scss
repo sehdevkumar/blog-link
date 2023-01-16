@@ -1,0 +1,3 @@
+@import "./mixin-generated";
+
+@include genrateCustomizedAliasClasses("font-size", "fs-", 1, 1000, "rem");

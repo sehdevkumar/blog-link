@@ -1,0 +1,23 @@
+<div class="header-class">
+  <div
+    style="
+      cursor: pointer;
+      display: block;
+      z-index: 200000;
+      position: absolute;
+    "
+    (click)="onMenuToggle()"
+  >
+    <img
+      src="{{
+        isMenuVisible
+          ? 'assets/images/close_menu_icon.svg'
+          : 'assets/images/menu_icon.svg'
+      }}"
+    />
+  </div>
+
+  <div class="menu" [@slideAnimation]="isMenuVisible ? 'open' : 'close'">
+    <app-menu></app-menu>
+  </div>
+</div>

@@ -1,1 +1,45 @@
 /* You can add global styles to this file, and also import other style files */
+@import "./assets/scss/reset";
+@import "./assets/scss/mixins";
+
+::-webkit-scrollbar {
+  -webkit-appearance: none;
+}
+::-webkit-scrollbar:vertical {
+  width: 11px;
+}
+::-webkit-scrollbar:horizontal {
+  height: 11px;
+}
+::-webkit-scrollbar-thumb {
+  border-radius: 8px;
+  border: 2px solid white; /* should match background, can't be transparent */
+  background-color: rgba(0, 0, 0, 0.5);
+}
+::-webkit-scrollbar-track {
+  background-color: #fff;
+  border-radius: 8px;
+}
+
+.main-outlet {
+  width: 100%;
+  height: 100%;
+  box-sizing: border-box;
+  background-color: #191919;
+  overflow-x: hidden !important;
+}
+
+.white {
+  color: white;
+}
+
+.visiblity {
+  transform: translate(-100%, 0px);
+  transition: all 0.25s ease;
+  opacity: 0;
+}
+.Invisiblity {
+  transform: translate(0%, 0%);
+  transition: all 0.25s ease;
+  opacity: 1;
+}

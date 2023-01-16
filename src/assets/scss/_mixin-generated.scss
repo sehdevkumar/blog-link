@@ -1,0 +1,35 @@
+// @mixin genrateCustomizedAliasClasses(
+//   $attrName,
+//   $customClassName,
+//   $start: 1,
+//   $end: 10,
+//   $suffix: "rem"
+// ) {
+//   @for $i from $start through $end {
+//     .#{$customClassName}#{$i} {
+//       #{$attrName}: clamp(
+//         1rem,
+//         #{-0.875 * $i / 16}#{$suffix} #{"+"} #{8.3333vw},
+//         3.5rem
+//       );
+//     }
+//   }
+// }
+
+@mixin genrateCustomizedAliasClasses(
+  $attrName,
+  $customClassName,
+  $start: 1,
+  $end: 10,
+  $suffix: "rem"
+) {
+  @for $i from $start through $end {
+    .#{$customClassName}#{$i} {
+      #{$attrName}: clamp(
+        #{$i / 16}#{$suffix},
+        #{-0.875 * $i / 16}#{$suffix} #{"+"} #{8.3333vw},
+        #{($i * 3.5) / 16}#{$suffix}
+      );
+    }
+  }
+}
