@@ -13,8 +13,17 @@ else
      exit
 fi
 
-# commit changes with a message
-git commit -m "Automatic commit from bash script"
+read -p "Are you sure to commit the changes? (yes/no) " confirm2
+read -p "Enter the Commit Message :" commitMsg
+
+if [ "$confirm2" == "y" ] || [ "$confirm2" == "yes" ]; then
+    # add all changes to the git index
+   # commit changes with a message
+     git commit -m "$commitMsg"
+
+else
+     exit
+fi
 
 # push the commit to the remote repository
 git push
