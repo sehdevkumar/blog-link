@@ -1,10 +1,4 @@
-import {
-  animate,
-  state,
-  style,
-  transition,
-  trigger,
-} from '@angular/animations';
+import { animate, state, style, transition, trigger } from '@angular/animations'
 
 export const slideAnimation = trigger('slideAnimation', [
   state(
@@ -12,16 +6,16 @@ export const slideAnimation = trigger('slideAnimation', [
     style({
       transform: 'translateX(0%)',
       opacity: 1,
-    })
+    }),
   ),
   state(
     'close',
     style({
       transform: 'translateX(-100%)',
       opacity: 0.8,
-    })
+    }),
   ),
   transition('open <=> close', [
-    animate('400ms 20ms cubic-bezier(.17,.67,.88,.1)'),
+    animate('220ms 40ms cubic-bezier(.17,.67,.88,.1)'),
   ]),
-]);
+])

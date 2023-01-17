@@ -1,3 +1,18 @@
 @import "./mixin-generated";
 
-@include genrateCustomizedAliasClasses("font-size", "fs-", 1, 1000, "rem");
+@include genrateCustomizedFontAliasClasses("font-size", "fs-", 1, 1000, "rem");
+
+@include genrateCustomizedAliasClasses("height", "h-", 1, 1000, "px");
+@include genrateCustomizedAliasClasses("width", "w-", 1, 1000, "px");
+@include genrateCustomizedAliasClasses("height", "hp-", 1, 1000, "%");
+@include genrateCustomizedAliasClasses("width", "wp-", 1, 1000, "%");
+
+@include genrateCustomizedAliasClasses("margin-left", "h-", 1, 1000, "px");
+@include genrateCustomizedAliasClasses("margin-top", "h-", 1, 1000, "px");
+@include genrateCustomizedAliasClasses("margin-bottom", "h-", 1, 1000, "px");
+@include genrateCustomizedAliasClasses("margin-right", "h-", 1, 1000, "px");
+
+@include genrateCustomizedAliasClasses("padding-left", "h-", 1, 1000, "px");
+@include genrateCustomizedAliasClasses("padding-top", "h-", 1, 1000, "px");
+@include genrateCustomizedAliasClasses("padding-bottom", "h-", 1, 1000, "px");
+@include genrateCustomizedAliasClasses("padding-right", "h-", 1, 1000, "px");

@@ -8,6 +8,7 @@ import { LandingPageComponent } from './components/landing-page/landing-page.com
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 import { HeaderComponent } from './layout/header/header.component';
 import { MenuComponent } from './layout/header/menu/menu.component';
+import { WriteStoryComponent } from './components/write-story/write-story.component';
 
 @NgModule({
   declarations: [
@@ -16,6 +17,7 @@ import { MenuComponent } from './layout/header/menu/menu.component';
     PageNotFoundComponent,
     HeaderComponent,
     MenuComponent,
+    WriteStoryComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, BrowserAnimationsModule],
   providers: [],

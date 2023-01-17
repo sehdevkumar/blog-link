@@ -4,4 +4,9 @@
   width: max-content;
   height: max-content;
   row-gap: 20px;
+
+  &:nth-child(n) {
+    font-family: "Roboto", sans-serif;
+    cursor: pointer;
+  }
 }

@@ -1,6 +1,5 @@
 <div class="menu-list">
-  <div class="white fs-20">Home</div>
-  <div class="white fs-20">Write Story</div>
-  <div class="white fs-20">Read Stories</div>
-  <div class="white fs-20">About</div>
+  <ng-container *ngFor="let app of appList">
+    <div class="white fs-20" (click)="onNavigate(app)">{{ app?.appName }}</div>
+  </ng-container>
 </div>
