@@ -1,6 +1,8 @@
 ::ng-deep .angular-editor-textarea {
   color: white;
-  border: none;
+  border: none !important;
+  outline: none;
+  resize: auto;
 }
 
 ::ng-deep .angular-editor-toolbar {

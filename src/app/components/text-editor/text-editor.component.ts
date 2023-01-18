@@ -1,19 +1,35 @@
-import { Component, OnInit } from '@angular/core';
-import { AngularEditorConfig } from '@kolkov/angular-editor';
+import {
+  AfterViewInit,
+  Component,
+  ComponentRef,
+  Input,
+  OnChanges,
+  OnInit,
+  SimpleChanges,
+  ViewChild,
+} from '@angular/core';
+import {
+  AngularEditorComponent,
+  AngularEditorConfig,
+} from '@kolkov/angular-editor';
 
 @Component({
   selector: 'app-text-editor',
   templateUrl: './text-editor.component.html',
   styleUrls: ['./text-editor.component.scss'],
 })
-export class TextEditorComponent implements OnInit {
+export class TextEditorComponent implements OnInit, AfterViewInit, OnChanges {
+  @ViewChild('aeRef') aeRef: ComponentRef<AngularEditorComponent> | undefined;
+
+  @Input() isToolbarVisible: boolean | undefined;
+
   htmlContent = '';
 
   config: AngularEditorConfig = {
     editable: true,
     spellcheck: true,
-    height: '15rem',
-    minHeight: '5rem',
+    height: 'auto',
+    minHeight: 'auto',
     placeholder: 'Enter text here...',
     translate: 'no',
     defaultParagraphSeparator: 'p',
@@ -21,6 +37,7 @@ export class TextEditorComponent implements OnInit {
     toolbarHiddenButtons: [['bold']],
     uploadWithCredentials: false,
     upload: undefined,
+    enableToolbar: false,
     customClasses: [
       {
         name: 'quote',
@@ -40,4 +57,21 @@ export class TextEditorComponent implements OnInit {
   constructor() {}
 
   ngOnInit(): void {}
+
+  ngAfterViewInit(): void {
+    this.onToolBarToggle(false);
+  }
+
+  onToolBarToggle(isToolbarVisible: boolean = true) {
+    const ref = this.aeRef as unknown as AngularEditorComponent;
+    ref.editorToolbar.showToolbar = isToolbarVisible;
+  }
+
+  ngOnChanges(changes: SimpleChanges): void {
+    if (this.isToolbarVisible) {
+      this.onToolBarToggle(true);
+    } else {
+      this.onToolBarToggle(false);
+    }
+  }
 }

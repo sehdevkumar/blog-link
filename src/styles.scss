@@ -53,3 +53,9 @@ body {
 .app-bg {
   background-color: #191919 !important;
 }
+
+.angular-editor-textarea:after {
+  content: "";
+  display: none !important;
+  resize: none;
+}

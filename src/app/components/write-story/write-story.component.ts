@@ -9,6 +9,7 @@ import { inputAmimation } from '../../animations/input-animation';
 export class WriteStoryComponent implements OnInit {
   inputText: string | undefined;
   inputState = 'inactive';
+  isToolbarVisible = false;
 
   constructor() {}
 

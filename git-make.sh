@@ -25,5 +25,11 @@ else
      exit
 fi
 
+# Pull
+
 # push the commit to the remote repository
 git push
+
+git pull
+
+
