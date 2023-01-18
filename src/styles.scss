@@ -2,6 +2,11 @@
 @import "./assets/scss/reset";
 @import "./assets/scss/mixins";
 @import "./assets/scss/fonts";
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";
+@import "./assets/scss/input_fields_reset";
+body {
+  background-color: #191919 !important;
+}
 
 ::-webkit-scrollbar {
   -webkit-appearance: none;

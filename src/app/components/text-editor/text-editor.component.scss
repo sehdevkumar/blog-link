@@ -1,0 +1,13 @@
+::ng-deep .angular-editor-textarea {
+  color: white;
+  border: none;
+}
+
+::ng-deep .angular-editor-toolbar {
+  .angular-editor-toolbar-set:nth-child(9) {
+    display: none !important;
+  }
+  .angular-editor-toolbar-set:nth-child(11) {
+    display: none !important;
+  }
+}

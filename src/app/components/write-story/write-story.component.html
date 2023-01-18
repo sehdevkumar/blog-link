@@ -1,1 +1,25 @@
-<div class="app-bg hp-100 wp-100"></div>
+<div class="app-bg hp-100 wp-100 mt-50" style="padding: 25px 50px">
+  <div class="row justify-content-center">
+    <div class="offset-md-2"></div>
+    <div class="col-md-8">
+      <mat-form-field [@inputAnimation]="inputState" [appearance]="'outline'">
+        <mat-label>Story Title</mat-label>
+        <input
+          matInput
+          [(ngModel)]="inputText"
+          (focus)="onFocus()"
+          (blur)="onBlur()"
+        />
+      </mat-form-field>
+    </div>
+    <div class="offset-md-2"></div>
+  </div>
+
+  <div class="row justify-content-center">
+    <div class="offset-md-2"></div>
+    <div class="col-md-8">
+      <app-text-editor></app-text-editor>
+    </div>
+    <div class="offset-md-2"></div>
+  </div>
+</div>

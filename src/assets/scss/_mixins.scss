@@ -7,12 +7,12 @@
 @include genrateCustomizedAliasClasses("height", "hp-", 1, 1000, "%");
 @include genrateCustomizedAliasClasses("width", "wp-", 1, 1000, "%");
 
-@include genrateCustomizedAliasClasses("margin-left", "h-", 1, 1000, "px");
-@include genrateCustomizedAliasClasses("margin-top", "h-", 1, 1000, "px");
-@include genrateCustomizedAliasClasses("margin-bottom", "h-", 1, 1000, "px");
-@include genrateCustomizedAliasClasses("margin-right", "h-", 1, 1000, "px");
+@include genrateCustomizedAliasClasses("margin-left", "ml-", 1, 1000, "px");
+@include genrateCustomizedAliasClasses("margin-top", "mt-", 1, 1000, "px");
+@include genrateCustomizedAliasClasses("margin-bottom", "mb-", 1, 1000, "px");
+@include genrateCustomizedAliasClasses("margin-right", "mr-", 1, 1000, "px");
 
-@include genrateCustomizedAliasClasses("padding-left", "h-", 1, 1000, "px");
-@include genrateCustomizedAliasClasses("padding-top", "h-", 1, 1000, "px");
-@include genrateCustomizedAliasClasses("padding-bottom", "h-", 1, 1000, "px");
-@include genrateCustomizedAliasClasses("padding-right", "h-", 1, 1000, "px");
+@include genrateCustomizedAliasClasses("padding-left", "pl-", 1, 1000, "px");
+@include genrateCustomizedAliasClasses("padding-top", "pt-", 1, 1000, "px");
+@include genrateCustomizedAliasClasses("padding-bottom", "pb-", 1, 1000, "px");
+@include genrateCustomizedAliasClasses("padding-right", "pr-", 1, 1000, "px");
