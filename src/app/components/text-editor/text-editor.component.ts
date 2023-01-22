@@ -68,9 +68,7 @@ export class TextEditorComponent implements OnInit, AfterViewInit, OnChanges {
     const aeRef = (this.aeRef as unknown) as AngularEditorComponent
     aeRef?.editorWrapper?.nativeElement?.addEventListener(
       'mouseenter',
-      (_e: Event) => {
-        console.log('hello world', _e?.target?.dispatchEvent())
-      },
+      (_e: Event) => {},
     )
   }
 
