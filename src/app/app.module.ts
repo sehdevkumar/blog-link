@@ -14,6 +14,7 @@ import { MaterialModule } from './material.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { TextEditorComponent } from './components/text-editor/text-editor.component';
 import { HttpClientModule } from '@angular/common/http';
+import { TextEditorDirective } from './directives/text-editor.directive';
 
 @NgModule({
   declarations: [
@@ -24,6 +25,7 @@ import { HttpClientModule } from '@angular/common/http';
     MenuComponent,
     WriteStoryComponent,
     TextEditorComponent,
+    TextEditorDirective,
   ],
   imports: [
     BrowserModule,

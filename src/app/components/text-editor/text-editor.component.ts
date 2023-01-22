@@ -1,29 +1,32 @@
 import {
   AfterViewInit,
+  ChangeDetectionStrategy,
   Component,
   ComponentRef,
+  HostListener,
   Input,
   OnChanges,
   OnInit,
   SimpleChanges,
   ViewChild,
-} from '@angular/core';
+} from '@angular/core'
 import {
   AngularEditorComponent,
   AngularEditorConfig,
-} from '@kolkov/angular-editor';
+} from '@kolkov/angular-editor'
 
 @Component({
   selector: 'app-text-editor',
   templateUrl: './text-editor.component.html',
   styleUrls: ['./text-editor.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TextEditorComponent implements OnInit, AfterViewInit, OnChanges {
-  @ViewChild('aeRef') aeRef: ComponentRef<AngularEditorComponent> | undefined;
+  @ViewChild('aeRef') aeRef: ComponentRef<AngularEditorComponent> | undefined
 
-  @Input() isToolbarVisible: boolean | undefined;
+  @Input() isToolbarVisible: boolean | undefined
 
-  htmlContent = '';
+  htmlContent = ''
 
   config: AngularEditorConfig = {
     editable: true,
@@ -53,25 +56,38 @@ export class TextEditorComponent implements OnInit, AfterViewInit, OnChanges {
         tag: 'h1',
       },
     ],
-  };
+  }
+
   constructor() {}
 
   ngOnInit(): void {}
 
   ngAfterViewInit(): void {
-    this.onToolBarToggle(false);
+    this.onToolBarToggle(false)
+
+    const aeRef = (this.aeRef as unknown) as AngularEditorComponent
+    aeRef?.editorWrapper?.nativeElement?.addEventListener(
+      'mouseenter',
+      (_e: Event) => {
+        console.log('hello world', _e?.target?.dispatchEvent())
+      },
+    )
   }
 
   onToolBarToggle(isToolbarVisible: boolean = true) {
-    const ref = this.aeRef as unknown as AngularEditorComponent;
-    ref.editorToolbar.showToolbar = isToolbarVisible;
+    const ref = (this.aeRef as unknown) as AngularEditorComponent
+    ref.editorToolbar.showToolbar = isToolbarVisible
   }
 
   ngOnChanges(changes: SimpleChanges): void {
     if (this.isToolbarVisible) {
-      this.onToolBarToggle(true);
+      this.onToolBarToggle(true)
     } else {
-      this.onToolBarToggle(false);
+      this.onToolBarToggle(false)
     }
+  }
+
+  onModelChanged(event: any) {
+    console.log(event)
   }
 }
