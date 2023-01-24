@@ -19,7 +19,6 @@ import {
   selector: 'app-text-editor',
   templateUrl: './text-editor.component.html',
   styleUrls: ['./text-editor.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TextEditorComponent implements OnInit, AfterViewInit, OnChanges {
   @ViewChild('aeRef') aeRef: ComponentRef<AngularEditorComponent> | undefined
@@ -64,12 +63,6 @@ export class TextEditorComponent implements OnInit, AfterViewInit, OnChanges {
 
   ngAfterViewInit(): void {
     this.onToolBarToggle(false)
-
-    const aeRef = (this.aeRef as unknown) as AngularEditorComponent
-    aeRef?.editorWrapper?.nativeElement?.addEventListener(
-      'mouseenter',
-      (_e: Event) => {},
-    )
   }
 
   onToolBarToggle(isToolbarVisible: boolean = true) {
