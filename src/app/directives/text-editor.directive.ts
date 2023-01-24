@@ -1,4 +1,5 @@
-import { Directive, ElementRef, HostListener } from '@angular/core'
+import { Directive, ElementRef, HostListener } from '@angular/core';
+import { v4 as uuidv4 } from 'uuid';
 
 /**
  * @description
@@ -13,22 +14,27 @@ export class TextEditorDirective {
     childList: true,
     attributes: false,
     subtree: false,
-  }
+  };
 
   @HostListener('keydown', ['$event'])
   onKeydownHandler(event: KeyboardEvent) {
-    const observer = new MutationObserver(this.callback)
+    console.log(event);
+    const observer = new MutationObserver(this.callback);
     if (event.keyCode === 13 && event.key === 'Enter') {
-      const nodeList = event?.target as HTMLDivElement
+      const nodeList = event?.target as HTMLDivElement;
 
-      observer.observe(nodeList as Node, this.observerOptions)
+      observer.observe(nodeList as Node, this.observerOptions);
     } else {
-      observer.disconnect()
+      observer.disconnect();
     }
   }
 
-  callback(mutationList: any, observer: any) {
-    console.log(mutationList)
+  callback(mutationList: Array<MutationRecord>, observer: any) {
+    mutationList?.forEach((list, index) => {
+      const uuid = uuidv4();
+      const pEle = list?.addedNodes[0] as HTMLParagraphElement;
+      pEle.setAttribute('uuid', uuid + '');
+    });
   }
 
   constructor() {}

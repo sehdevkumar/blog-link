@@ -9,11 +9,11 @@ import {
   OnInit,
   SimpleChanges,
   ViewChild,
-} from '@angular/core'
+} from '@angular/core';
 import {
   AngularEditorComponent,
   AngularEditorConfig,
-} from '@kolkov/angular-editor'
+} from '@kolkov/angular-editor';
 
 @Component({
   selector: 'app-text-editor',
@@ -21,11 +21,11 @@ import {
   styleUrls: ['./text-editor.component.scss'],
 })
 export class TextEditorComponent implements OnInit, AfterViewInit, OnChanges {
-  @ViewChild('aeRef') aeRef: ComponentRef<AngularEditorComponent> | undefined
+  @ViewChild('aeRef') aeRef: ComponentRef<AngularEditorComponent> | undefined;
 
-  @Input() isToolbarVisible: boolean | undefined
+  @Input() isToolbarVisible: boolean | undefined;
 
-  htmlContent = ''
+  htmlContent = '';
 
   config: AngularEditorConfig = {
     editable: true,
@@ -55,30 +55,30 @@ export class TextEditorComponent implements OnInit, AfterViewInit, OnChanges {
         tag: 'h1',
       },
     ],
-  }
+  };
 
   constructor() {}
 
   ngOnInit(): void {}
 
   ngAfterViewInit(): void {
-    this.onToolBarToggle(false)
+    this.onToolBarToggle(false);
   }
 
   onToolBarToggle(isToolbarVisible: boolean = true) {
-    const ref = (this.aeRef as unknown) as AngularEditorComponent
-    ref.editorToolbar.showToolbar = isToolbarVisible
+    const ref = this.aeRef as unknown as AngularEditorComponent;
+    ref.editorToolbar.showToolbar = isToolbarVisible;
   }
 
   ngOnChanges(changes: SimpleChanges): void {
     if (this.isToolbarVisible) {
-      this.onToolBarToggle(true)
+      this.onToolBarToggle(true);
     } else {
-      this.onToolBarToggle(false)
+      this.onToolBarToggle(false);
     }
   }
 
   onModelChanged(event: any) {
-    console.log(event)
+    console.log(event);
   }
 }
