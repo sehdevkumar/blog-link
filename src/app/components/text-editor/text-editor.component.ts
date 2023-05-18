@@ -5,6 +5,7 @@ import {
   ComponentRef,
   HostListener,
   Input,
+  NgZone,
   OnChanges,
   OnInit,
   SimpleChanges,
@@ -24,6 +25,7 @@ export class TextEditorComponent implements OnInit, AfterViewInit, OnChanges {
   @ViewChild('aeRef') aeRef: ComponentRef<AngularEditorComponent> | undefined;
 
   @Input() isToolbarVisible: boolean | undefined;
+  @Input() selectedImage: string | undefined;
 
   htmlContent = '';
 
@@ -57,12 +59,16 @@ export class TextEditorComponent implements OnInit, AfterViewInit, OnChanges {
     ],
   };
 
-  constructor() {}
+  get getAeRef() {
+   return this.aeRef as unknown as AngularEditorComponent;
+  }
+
+  constructor(private ngZone: NgZone) {}
 
   ngOnInit(): void {}
 
   ngAfterViewInit(): void {
-    this.onToolBarToggle(false);
+    this.onToolBarToggle(this.isToolbarVisible);
   }
 
   onToolBarToggle(isToolbarVisible: boolean = true) {
@@ -71,11 +77,42 @@ export class TextEditorComponent implements OnInit, AfterViewInit, OnChanges {
   }
 
   ngOnChanges(changes: SimpleChanges): void {
-    if (this.isToolbarVisible) {
-      this.onToolBarToggle(true);
-    } else {
-      this.onToolBarToggle(false);
+
+    if (changes?.isToolbarVisible) {
+      if (this.isToolbarVisible) {
+        this.onToolBarToggle(true);
+      } else {
+        this.onToolBarToggle(false);
+      }
+
     }
+
+    if (changes?.selectedImage) {
+
+      this.ngZone.runOutsideAngular(() => {
+
+              const imageTag =  new Image(1000);
+              const parent =   (this.getAeRef?.textArea?.nativeElement as HTMLDivElement);
+              imageTag.src = this.selectedImage as string;
+              imageTag.style.objectFit = 'fit';
+              imageTag.style.display = 'block';
+              parent.append(imageTag);
+
+              imageTag?.addEventListener('click', (e) => {
+                 const c =  confirm('Are sure to remove this image ?');
+
+                 if (c) {
+                   parent.removeChild(imageTag);
+
+                 }
+              });
+
+      });
+
+
+
+    }
+
   }
 
   onModelChanged(event: any) {

@@ -11,6 +11,8 @@ export class WriteStoryComponent implements OnInit {
   inputState = 'inactive';
   isToolbarVisible = false;
 
+  imageSelected = '';
+
   constructor() {}
 
   ngOnInit(): void {}
@@ -21,5 +23,26 @@ export class WriteStoryComponent implements OnInit {
 
   onBlur() {
     this.inputState = 'inactive';
+  }
+
+  handleInputChange(e: any) {
+   const file = e.target.files[0];
+
+   if (file) {
+    const reader = new FileReader();
+
+    reader.onload = (event) => {
+      const imageData = event?.target?.result;
+
+      const imagePath = file.path;
+      const imageBase64 = imageData?.toString();
+
+      console.log(imagePath);
+      console.log(imageBase64);
+      this.imageSelected = imageBase64 as string;
+    };
+
+    reader.readAsDataURL(file);
+  }
   }
 }
