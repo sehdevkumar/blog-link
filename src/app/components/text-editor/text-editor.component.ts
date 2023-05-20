@@ -15,6 +15,7 @@ import {
   AngularEditorComponent,
   AngularEditorConfig,
 } from '@kolkov/angular-editor';
+import { SingletonService } from 'src/app/services/singleton.service';
 
 @Component({
   selector: 'app-text-editor',
@@ -35,11 +36,11 @@ export class TextEditorComponent implements OnInit, AfterViewInit, OnChanges {
     height: 'auto',
     minHeight: 'auto',
     placeholder: 'Enter text here...',
-    translate: 'no',
+    translate: 'yes',
     defaultParagraphSeparator: 'p',
     defaultFontName: 'Arial',
     toolbarHiddenButtons: [['bold']],
-    uploadWithCredentials: false,
+    uploadWithCredentials: true,
     upload: undefined,
     enableToolbar: false,
     customClasses: [
@@ -63,7 +64,7 @@ export class TextEditorComponent implements OnInit, AfterViewInit, OnChanges {
    return this.aeRef as unknown as AngularEditorComponent;
   }
 
-  constructor(private ngZone: NgZone) {}
+  constructor(private ngZone: NgZone, private ss: SingletonService) {}
 
   ngOnInit(): void {}
 
@@ -89,7 +90,7 @@ export class TextEditorComponent implements OnInit, AfterViewInit, OnChanges {
 
     if (changes?.selectedImage) {
 
-      this.ngZone.runOutsideAngular(() => {
+
 
               const imageTag =  new Image(1000);
               const parent =   (this.getAeRef?.textArea?.nativeElement as HTMLDivElement);
@@ -99,15 +100,15 @@ export class TextEditorComponent implements OnInit, AfterViewInit, OnChanges {
               parent.append(imageTag);
 
               imageTag?.addEventListener('click', (e) => {
-                 const c =  confirm('Are sure to remove this image ?');
-
-                 if (c) {
-                   parent.removeChild(imageTag);
-
-                 }
+                   this.ss.onDisplayConfimationDialoag({message: 'Are You Sure to Remove Image ?', okText: 'Yes', cancelText: 'No', title: 'Removing Image'})?.subscribe(res => {
+                    console.log(res);
+                    if (res) {
+                         parent?.removeChild(imageTag);
+                      }
+                   });
               });
 
-      });
+
 
 
 

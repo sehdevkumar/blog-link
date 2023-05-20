@@ -1,3 +1,4 @@
+import { CustomDialogBoxModule } from './components/custom-dialog-box/custom-dialog-box.module';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -36,6 +37,7 @@ import { TextEditorDirective } from './directives/text-editor.directive';
     FormsModule,
     AngularEditorModule,
     HttpClientModule,
+    CustomDialogBoxModule
   ],
   providers: [],
   bootstrap: [AppComponent],
