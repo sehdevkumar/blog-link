@@ -69,7 +69,9 @@ export class TextEditorComponent implements OnInit, AfterViewInit, OnChanges {
   ngOnInit(): void {}
 
   ngAfterViewInit(): void {
-    this.onToolBarToggle(this.isToolbarVisible);
+    setTimeout(() => {
+      this.onToolBarToggle(this.isToolbarVisible);
+    }, 1000);
   }
 
   onToolBarToggle(isToolbarVisible: boolean = true) {
@@ -107,9 +109,6 @@ export class TextEditorComponent implements OnInit, AfterViewInit, OnChanges {
                       }
                    });
               });
-
-
-
 
 
     }
